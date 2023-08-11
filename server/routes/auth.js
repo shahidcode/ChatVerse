@@ -8,4 +8,4 @@ router.post('/signup', signUp);
 router.post('/signin',signIn);
 router.get('/verify',verifyUser);
 
-export default router;    //exporting all the routes
+export default router;    
