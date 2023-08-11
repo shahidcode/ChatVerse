@@ -20,7 +20,6 @@ const Login = () => {
             localStorage.setItem('token','Bearer '+data);
             navigate('/chat');
 
-            //this fixes problem of late rendering of useEffect which shows current id and username as undefined
             window.location.reload(false);
         })
         .catch( err => {
