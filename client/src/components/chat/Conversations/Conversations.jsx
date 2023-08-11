@@ -32,7 +32,7 @@ function Conversations( {selectedUser, socket, allMessages, setAllMessages, id, 
                 setHideInput(false);
             }
             else{
-                setCurrentMessage('');  //to reset form values
+                setCurrentMessage('');  
                 setAllMessages( prev=> ([...prev,{
                     text: currentMessage,
                     sender: id,
