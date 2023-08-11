@@ -54,7 +54,7 @@ function ChatPage () {
     //fetch offline people
     useEffect( ()=>{
         axios.get('/people').then( res => {
-            //don't include the current user itself and also online people
+            
             const offlinePeopleArr = res.data.filter( p => p._id !== id )
                                              .filter( p => !Object.keys(onlinePeople).includes(p._id));
             setofflinePeople(offlinePeopleArr); 
