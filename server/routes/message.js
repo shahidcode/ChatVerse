@@ -3,6 +3,6 @@ import { message } from '../controllers/message.js';
 import { verifyUser } from '../middlewares/verifyUser.js';
 const router = express.Router();
 
-router.get('/:selectedUserId',message);     /* localhost:3000/messages/893kjadfnc  */
+router.get('/:selectedUserId',message);     
 
 export default router;
