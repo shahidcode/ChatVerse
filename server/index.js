@@ -1,4 +1,3 @@
-//node version 14+ doesn't uses require syntax any more.
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -21,12 +20,12 @@ mongoose.connect(process.env.MONGO_URL)
 .catch( (err)=>console.log(err) );
 
 //middlewares
-app.use(express.json({ limit: '20mb' }));       //recognize the incoming Request Object as a JSON Object  //'urlencoded' recognizes the incoming Request Object as strings or arrays.
+app.use(express.json({ limit: '20mb' }));       
 app.use(cors({
     origin : process.env.CLIENT_URL,
     credentials : true
 }))
-app.use('/uploads', express.static( path.resolve() + '/uploads'));  //'__dirname is no longer supported, so use path.resolve()'
+app.use('/uploads', express.static( path.resolve() + '/uploads'));  
 app.use('/auth',authRoutes);
 app.use('/messages',messageRoutes);
 app.use('/people',peopleRoutes);
