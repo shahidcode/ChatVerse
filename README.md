@@ -6,6 +6,10 @@ A real-time chat application built with React, Socket.io, Node.js, and MongoDB.
 - Backend: Node.js + Express + Socket.io
 - Database: MongoDB
 
+## App Preview
+<img width="1470" height="832" alt="Screenshot 2026-04-19 at 1 22 33 PM" src="https://github.com/user-attachments/assets/ef29fcee-0484-4242-a8a8-4302af59885f" />
+
+
 ## Folder structure
 ```
 ChatVerse/
