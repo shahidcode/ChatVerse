@@ -36,20 +36,33 @@ function ChatPage () {
     } ,[])
  
     useEffect(()=>{
-        socket?.on('connect',()=>{
-            console.log('user connected')
-            
-            socket?.on('getMessage',handleMessage);
-            socket?.emit('addOnlinePeople',id); 
-            socket?.on('getOnlinePeople',(data)=>setOnlinePeople( data ));
-        })
-    },[socket, allMessages]);  
+        if (!socket) return;
 
-    function handleMessage(e){
-        if( e.sender === selectedUser ){
-            setAllMessages(prev => ([...prev, {...e}]));
-        }
-    }
+        const handleConnect = () => {
+            console.log('user connected');
+            socket.emit('addOnlinePeople', id);
+        };
+
+        const handleGetMessage = (e) => {
+            if (e.sender === selectedUser) {
+                setAllMessages(prev => [...prev, e]);
+            }
+        };
+
+        const handleOnlinePeople = (data) => {
+            setOnlinePeople(data);
+        };
+
+        socket.on('connect', handleConnect);
+        socket.on('getMessage', handleGetMessage);
+        socket.on('getOnlinePeople', handleOnlinePeople);
+
+        return () => {
+            socket.off('connect', handleConnect);
+            socket.off('getMessage', handleGetMessage);
+            socket.off('getOnlinePeople', handleOnlinePeople);
+        };
+    },[socket, selectedUser, id]);
 
     //fetch offline people
     useEffect( ()=>{
