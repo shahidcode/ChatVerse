@@ -18,7 +18,7 @@ const Login = () => {
         .then((res)=>{
             data = res.data.token;
             localStorage.setItem('token','Bearer '+data);
-            navigate('/chat');
+            navigate('/');
 
             window.location.reload(false);
         })
